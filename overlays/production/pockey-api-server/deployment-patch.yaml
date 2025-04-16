@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pockey-api-server
+  namespace: pockey
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+      - name: pockey-api-server
+        env:
+        - name: NODE_ENV
+          value: "production"
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+          limits:
+            cpu: "1000m"
+            memory: "1Gi" 

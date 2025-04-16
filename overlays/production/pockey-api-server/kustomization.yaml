@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: pockey
+resources:
+- ../../../base/pockey-api-server
+
+patches:
+- path: deployment-patch.yaml
+  target:
+    kind: Deployment
+    name: pockey-api-server
+
+- path: configmap-patch.yaml
+  target:
+    kind: ConfigMap
+    name: pockey-api-server-config
+
+images:
+- name: harbor.kyojs.com/tjsry0466/pockey-api-server
+  newTag: 0be6aaa7d9ff2a9d25f3af6297b6f9f87793c224
+
+

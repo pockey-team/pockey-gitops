@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pockey-db
+  namespace: pockey
+spec:
+  type: ExternalName
+  externalName: db-33po9b-kr.vpc-pub-cdb.ntruss.com
+  ports:
+  - protocol: TCP
+    port: 3306
+    targetPort: 3306

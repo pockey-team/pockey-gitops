@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pockey-api-server-config
+  namespace: pockey
+data:
+  DB_HOST: "prod-db-host"
+  DB_PORT: "3306"
+  DB_USER: "prod-user"
+  DB_PASSWORD: "prod-password"
+  DB_NAME: "pockey_prod"
+  NODE_ENV: "production" 

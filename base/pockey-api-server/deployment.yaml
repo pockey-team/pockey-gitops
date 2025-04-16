@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pockey-api-server
+  namespace: pockey
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pockey-api-server
+  template:
+    metadata:
+      labels:
+        app: pockey-api-server
+    spec:
+      imagePullSecrets: 
+        - name: regcred
+      containers:
+      - name: pockey-api-server
+        image: harbor.kyojs.com/tjsry0466/pockey-api-server-dev:IMAGE_TAG
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+        livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+        readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+        envFrom:
+        - configMapRef:
+            name: pockey-api-server-config
+        env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pockey-api-secrets
+              key: DB_PASSWORD
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: pockey-api-secrets
+              key: JWT_SECRET
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pockey-api-secrets
+              key: REDIS_PASSWORD
+    

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pockey-api-server-config
+  namespace: pockey
+data:
+  DB_NAME: "pockey_development"
+  DB_HOST: "pockey-db.pockey.svc.cluster.local"
+  DB_USER: "tjsry0466"
+  NODE_ENV: "development"
+  REDIS_HOST: "redis-cluster-master.crawling-server.svc.cluster.local"
+  REDIS_PASSWORD: "diccXyEN5M"
+  REDIS_PREFIX: "pockey:"

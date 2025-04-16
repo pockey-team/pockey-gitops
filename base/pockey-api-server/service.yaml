@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pockey-api-server
+  namespace: pockey
+spec:
+  selector:
+    app: pockey-api-server
+  ports:
+  - port: 3000
+    targetPort: 3000
+  type: LoadBalancer
