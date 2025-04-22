@@ -17,7 +17,7 @@ spec:
         - name: regcred
       containers:
       - name: pockey-api-server
-        image: harbor.kyojs.com/tjsry0466/pockey-api-server-dev:IMAGE_TAG
+        image: harbor.kyojs.com/tjsry0466/pockey-api-server-dev:latest
         ports:
         - containerPort: 3000
         resources:
