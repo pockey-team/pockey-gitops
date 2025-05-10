@@ -18,4 +18,4 @@ patches:
 
 images:
 - name: harbor.kyojs.com/tjsry0466/pockey-api-server-dev
-  newTag: c64e07f8ca95d091de50f8d299fadb8ce2a12e21
+  newTag: 2e2d4dd903654afd3ae18fbfd678e5613a58626e
